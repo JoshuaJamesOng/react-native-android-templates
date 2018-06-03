@@ -107,3 +107,21 @@ private final ActivityEventListener $FIELD_NAME$ = new BaseActivityEventListener
     }
 };
 ```
+
+### Create React method to startActivityForResult - `sar`
+```
+@ReactMethod
+public void $NAME$(Promise promise) {
+    final Activity activity = getCurrentActivity();
+     
+    if (activity == null) {
+        promise.reject(ERROR_NO_ACTIVITY, "Activity doesn't exist");
+        return;
+    }
+
+    this.$NAME$Promise = promise;
+
+    final Intent intent = new Intent($ACTIVITY$.class);
+    activity.startActivityForResult(intent, $UPPER_NAME$_REQUEST_CODE);
+}
+```

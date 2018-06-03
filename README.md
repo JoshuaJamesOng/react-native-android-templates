@@ -85,3 +85,25 @@ private void sendEvent(ReactContext reactContext,
             .emit(eventName, params);
 }
 ```
+
+### Create ActivityEventListener - `ael`
+```
+private static final int REQUEST_$REQUEST_NAME$ = 1;
+private static final int ERROR_CANCELLED = -1;
+
+private final ActivityEventListener $FIELD_NAME$ = new BaseActivityEventListener(){
+    // TODO Register in constructor (reactContext.addActivityEventListener($FIELD_NAME$))
+    @Override
+    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
+        if (requestCode == REQUEST_CODE) {
+            if ($PROMISE_FIELD$ != null) {
+                if (resultCode == Activity.RESULT_CANCELED) {
+                    $PROMISE_FIELD$.reject(ERROR_CANCELLED);
+                } else if (resultCode == Activity.RESULT_OK) {
+                    $END$
+                }
+            }
+        }
+    }
+};
+```

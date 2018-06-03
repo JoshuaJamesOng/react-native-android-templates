@@ -5,7 +5,10 @@ File &amp; live templates for React Native Android native module development
 ### Native Java Module
 ```
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,12 +36,22 @@ public class ${NAME} extends ReactContextBaseJavaModule {
     public String getName() {
         return MODULE_NAME;
     }
-
 #if (${Constants} == true)
+
     @Nullable
     @Override
     public Map<String, Object> getConstants() {
         return CONSTANTS;
+    }
+#end
+#if (${Events} == true)
+
+private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
     }
 #end
 }

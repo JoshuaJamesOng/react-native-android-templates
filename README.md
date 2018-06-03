@@ -45,10 +45,20 @@ public class ${NAME} extends ReactContextBaseJavaModule {
 ```
 
 ## Live Templates
-### React Method (with Promise parameter)
+### React Method (with Promise parameter) - `rm`
 ```
 @ReactMethod
 public void $NAME$(Promise promise) {
     $END$
 }
+```
+### Resolve Promise with map - `resmap`
+```
+WritableMap map = Arguments.createMap();
+promise.resolve(map);
+```
+### Resolve Promise with array - `resarr`
+```
+WritableArray array = Arguments.createArray();
+promise.resolve(array);
 ```

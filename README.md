@@ -45,3 +45,10 @@ public class ${NAME} extends ReactContextBaseJavaModule {
 ```
 
 ## Live Templates
+### React Method (with Promise parameter)
+```
+@ReactMethod
+public void $NAME$(Promise promise) {
+    $END$
+}
+```

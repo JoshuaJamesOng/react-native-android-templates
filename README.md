@@ -75,3 +75,13 @@ promise.resolve(map);
 WritableArray array = Arguments.createArray();
 promise.resolve(array);
 ```
+### Create helper method to send React Native events - `rne`
+```
+private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+    reactContext
+            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+            .emit(eventName, params);
+}
+```
